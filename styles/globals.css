@@ -3,12 +3,126 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-.cover {
-  transform: translateY(-100%);
+a{
+  cursor: pointer;
 }
+
+.button:after{
+  content: '';
+  background-image: url(/arrow-downOff.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 31px;
+  height: 29px;
+  margin-left: 1.2rem;
+
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.button.external:after{
+  -moz-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+
+.fromLeft{
+  transform: translateX(calc(-99%));
+}
+.fromRight{
+  transform: translateX(calc(99%));
+}
+
+.gridLines{
+  opacity: .15;
+}
+.gridLines, .gridMid{
+  border-left: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+.sectionLight{
+  background-color: theme('colors.offwhite');
+}
+
+.sectionDark{
+  color: theme('colors.offwhite');
+  background-color: theme('colors.darkgrey');
+}
+
+.serviceImg{
+  overflow: hidden;;
+
+}
+.serviceImg img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.caseImg{
+  overflow: hidden;
+}
+
+.caseImg.overlay > span:before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  position: absolute;
+  z-index: 1;
+}
+
+.caseImg img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.containImg img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.bigNumber{
+  font-size: 190px;
+}
+
+.slideIndicator{
+  background-color: theme('colors.offwhite');
+  height: 1.5px;
+  overflow: visible;
+}
+.currentSlide{
+  height: 16px;
+  background-color: theme('colors.offwhite');
+  bottom: -8px;
+}
+
+.caseItem {
+  transition: opacity .25s ease-in-out;
+}
+
+.caseList:hover .caseItem {
+  opacity: 0.25;
+}
+
+.caseList:hover .caseItem:hover {
+  opacity: 1;
+}
+
+
 
 @layer base {
   body {
     scroll-behavior: smooth;
+    background-color: theme(colors.offwhite);
   }
 }

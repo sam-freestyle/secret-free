@@ -7,8 +7,8 @@ const Logo = ({width, height, dark}) => (
         <a>
         <Image 
             src={dark ? '/logo.svg' : '/logoOff.svg'} 
-            width={width || 84}
-            height={height || 89}
+            width={width || 60}
+            height={height || 64}
             layout="intrinsic"        
         />    
         </a>

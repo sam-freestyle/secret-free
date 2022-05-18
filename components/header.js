@@ -3,9 +3,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
+//import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import Logo from './logo';
+import ThreeSlice from './three-slice';
 
 const Header = () => {
+
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
 
@@ -16,12 +20,17 @@ const Header = () => {
         setIsActive(true);
         const tl = gsap.timeline();
         tl.to('.cover-strip', {
-          yPercent: 100,
           duration: 0.3,
           ease: 'Expo.easeInOut',
-          stagger: 0.1,
-        });
-      }, 300);
+          stagger: 0,
+        }, 0);
+        tl.to('.fromLeft', {
+          xPercent: 99,
+        }, 0);
+        tl.to('.fromRight', {
+          xPercent: -99,
+        }, 0);
+      }, 0);
     };
     const aniEnd = () => {
       console.log(isActive);
@@ -31,16 +40,23 @@ const Header = () => {
       const tl = gsap.timeline();
       if (isActive) {
         tl.to('.cover-strip', {
-          yPercent: 200,
           duration: 0.3,
           ease: 'Expo.easeInOut',
-          stagger: -0.1,
-        });
+          stagger: 0,
+        }, 0);
+        tl.to('.fromLeft', {
+          xPercent: 0,
+        }, 0);
+        tl.to('.fromRight', {
+          xPercent: -1,
+        }, 0);
         setIsActive(false);
       }
 
-      tl.set('.cover-strip', { yPercent: 0 });
+      tl.set('.fromLeft', { clearProps: "all" });
+      tl.set('.fromRight', { clearProps: "all" });
       clearTimeout(timer);
+
     };
 
     router.events.on('routeChangeStart', aniStart);
@@ -57,25 +73,32 @@ const Header = () => {
     };
   }, [router]);
 
+  //gsap.registerPlugin(ScrollTrigger); 
+  useEffect(() => {
+
+    //const tl = gsap.timeline();
+    
+    // gsap.to("body", {
+    //   backgroundColor:"red",
+    //   scrollTrigger: {
+    //     trigger: ".intro",
+    //     start: "top top", // when the top of the trigger hits the top of the viewport
+    //     end: "bottom top", // end after scrolling 500px beyond the start
+    //     scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+    // }});
+
+  //end useEffect
+  }, [])
+
+
   return (
     <>
-      <div className="flex flex-col overflow-hidden relative z-50">
-        <div
-          id="cover"
-          className="cover-strip h-screen w-4/12 bg-darkgrey fixed top-0 left-0 cover "
-        ></div>
-        <div
-          id="cover1"
-          className="cover-strip h-screen w-4/12 bg-darkgrey fixed top-0 left-1/3 cover"
-        ></div>
-        <div
-          id="cover2"
-          className="cover-strip h-screen w-4/12 bg-darkgrey fixed top-0 left-2/3 cover"
-        ></div>       
-      </div>
-      <div className="container mx-auto flex justify-between py-8 absolute left-2/4 -translate-x-1/2">    
+
+      <ThreeSlice />
+
+      <div className="container mx-auto flex justify-between py-8 fixed z-40 left-2/4 -translate-x-1/2">    
         <Logo dark />
-        <ul className="flex gap-x-5">          
+        <ul className="flex gap-x-5 items-center">          
           <li>
             <Link href="/work">Work</Link>
           </li>
