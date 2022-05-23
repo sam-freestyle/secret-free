@@ -2,19 +2,45 @@
 //import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
+import { useEffect } from 'react';
 import ArrowDown from "../components/arrow";
 import Button from "../components/button";
 
 import { gsap } from 'gsap';
-
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default function Home() {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    gsap.utils.toArray('section').forEach((section, i) => {
+        
+        var colorAttr = section.classList.contains('sectionLight') ? 'light' : 'dark';
+        
+        gsap.to("#__next", {
+          backgroundColor: colorAttr === "dark" ? gsap.getProperty("html", "--dark") : gsap.getProperty("html", "--light"),
+          color: colorAttr === "dark" ? gsap.getProperty("html", "--light") : gsap.getProperty("html", "--dark"),
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: section,
+            scrub: true,
+            start:'top bottom',
+            end: '+=100%',
+            markers: {startColor: "green", endColor: "red", fontSize: "12px"},
+          }
+        });
+
+    });
+  }, [])
+
+  
   
   return (
     <>    
 
       {/*  Banner  */}
-      <div className="sectionDark w-100 h-screen flex justify-center items-center mt-0">
+      <section className="sectionDark w-100 h-screen flex justify-center items-center mt-0">
         <div className="container relative w-100 h-screen mx-auto flex flex-col justify-center flex-wrap">
 
           <div className="w-100">
@@ -32,10 +58,10 @@ export default function Home() {
           </div>
 
         </div>
-      </div>
+      </section>
 
       {/*  Intro  */}
-      <div className="intro sectionLight w-100 h-screen flex flex-col justify-center">
+      <section className="intro sectionLight w-100 h-screen flex flex-col justify-center">
         <div className="container relative w-100 h-screen mx-auto flex flex-col justify-center flex-wrap">
 
           <div className="w-2/3">
@@ -49,10 +75,10 @@ export default function Home() {
           <ArrowDown className="bottom-7" dark />
 
         </div>
-      </div>
+      </section>
 
       {/*  Case Study Carousel  */}
-      <div className="sectionDark relative w-100 h-screen flex flex-col justify-center">
+      <section className="sectionDark relative w-100 h-screen flex flex-col justify-center">
 
         <figure className="caseImg overlay absolute left-0 top-0 h-full w-full">
           <Image 
@@ -78,10 +104,10 @@ export default function Home() {
           </div>
         </div>
 
-      </div>
+      </section>
 
       {/*  Problem Setting  */}
-      <div className="sectionLight w-100 h-screen flex flex-col justify-center">
+      <section className="sectionLight w-100 h-screen flex flex-col justify-center">
         <div className="container relative w-100 h-screen mx-auto flex flex-col justify-center flex-wrap">
 
           <div className="w-2/3">
@@ -96,10 +122,10 @@ export default function Home() {
           <ArrowDown className="bottom-7" dark />
 
         </div>
-      </div>
+      </section>
 
       {/*  Strategy-first solutions  */}
-      <div className="sectionLight w-100 h-screen flex flex-col justify-center">
+      <section className="sectionLight w-100 h-screen flex flex-col justify-center">
         <div className="container relative w-100 h-screen mx-auto flex flex-col justify-center flex-wrap">
 
           <div className="w-2/3">
@@ -113,10 +139,10 @@ export default function Home() {
           <ArrowDown className="bottom-7" dark />
 
         </div>
-      </div>
+      </section>
 
       {/*  Service 1 - strategy  */}
-      <div className="sectionLight relative w-100 h-screen flex flex-col justify-center">
+      <section className="sectionLight relative w-100 h-screen flex flex-col justify-center">
 
         <figure className="serviceImg absolute left-0 z-3 h-screen w-3/5">
           <Image 
@@ -138,10 +164,10 @@ export default function Home() {
           <ArrowDown className="bottom-7 left-2/3" dark />
 
         </div>
-      </div>
+      </section>
 
       {/*  Service 2 - product design  */}
-      <div className="sectionLight relative w-100 h-screen flex flex-col justify-center">
+      <section className="sectionLight relative w-100 h-screen flex flex-col justify-center">
 
         <figure className="serviceImg absolute left-0 z-3 h-screen w-3/5">
           <Image 
@@ -163,10 +189,10 @@ export default function Home() {
           <ArrowDown className="bottom-7 left-2/3" dark />
 
         </div>
-      </div>
+      </section>
 
       {/*  Service 3 - customer experience  */}
-      <div className="sectionLight relative w-100 h-screen flex flex-col justify-center">
+      <section className="sectionLight relative w-100 h-screen flex flex-col justify-center">
 
         <figure className="serviceImg absolute left-0 z-3 h-screen w-3/5">
           <Image 
@@ -188,7 +214,7 @@ export default function Home() {
           <ArrowDown className="bottom-7 left-2/3" dark />
 
         </div>
-      </div>
+      </section>
 
     </>
   );

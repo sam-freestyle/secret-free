@@ -7,7 +7,7 @@ import Button from "../components/button";
 const Footer = () => {
   return (
         
-      <div id="contact" className="sectionDark w-100 h-screen flex flex-col justify-between pt-32 pb-10">
+      <section id="contact" className="sectionDark w-100 h-screen flex flex-col justify-between pt-32 pb-10">
 
         {/* CTA */}
         <div className="container relative mx-auto flex flex-row flex-nowrap">
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
         </div>
         
-      </div>
+      </section>
     
   );
 };

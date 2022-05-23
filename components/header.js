@@ -97,7 +97,7 @@ const Header = () => {
       <ThreeSlice />
 
       <div className="container mx-auto flex justify-between py-8 fixed z-40 left-2/4 -translate-x-1/2">    
-        <Logo dark />
+        <Logo  />
         <ul className="flex gap-x-5 items-center">          
           <li>
             <Link href="/work">Work</Link>

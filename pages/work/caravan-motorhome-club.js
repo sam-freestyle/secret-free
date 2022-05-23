@@ -77,7 +77,7 @@ export default function Whatwedo() {
 
         {/*  Solution  */}
         <div className="container relative w-full mx-auto flex flex-col justify-center flex-wrap">
-        <OverlayTitle bigtitle="03">Solution</OverlayTitle>
+          <OverlayTitle bigtitle="03">Solution</OverlayTitle>
           <div className="w-2/3 flex">
             <h3 className="font-semibold text-3xl leading-snug">Our ongoing partnership has so far tackled different challenges at the digital technology strategy and business strategy levels.</h3>
           </div>
@@ -95,12 +95,32 @@ export default function Whatwedo() {
           </figure>
         </div>
 
+        {/* Testimontial */}
+        <div className="container relative w-full mx-auto flex flex-col justify-center flex-wrap">        
+          <div className="w-full flex">
+            <h2 className="font-semibold text-6xl leading-tight">"Choosing Freestyle was an easy decision, based on the strength of their technical expertise, the relationship we created across the whole team and their understanding of our complexity."</h2>
+          </div>
+          <div className="w-2/3 flex self-end mt-20">
+            <p className="text-3xl leading-normal font-semibold">Digital Manager at Caravan and Motorhome Club</p> 
+          </div>
+        </div>
 
-
+        {/* Next Up */}
+        <div className="container relative w-full min-h-screen mx-auto flex flex-row justify-center flex-wrap items-end">        
+          <div className="w-1/3 flex">
+            <h2 className="font-semibold text-9xl leading-none ">Next<br/> Up</h2>
+          </div>
+          <div className="w-2/3 flex containImg">
+          <Image 
+                src="/img/floating-iphone-x-mockup-template@2x.png"
+                alt="Caravan Club members happy"
+                width="900"
+                height="400"
+                layout="intrinsic"
+              /> 
+          </div>
+        </div>
       </div>
-
-
-
     </>
   );
 }

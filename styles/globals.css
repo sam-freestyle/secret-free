@@ -47,14 +47,14 @@ a{
   border-right: 1.5px solid;
 }
 
-.sectionLight{
+/* .sectionLight{
   background-color: theme('colors.offwhite');
 }
 
 .sectionDark{
   color: theme('colors.offwhite');
   background-color: theme('colors.darkgrey');
-}
+} */
 
 .serviceImg{
   overflow: hidden;;
@@ -119,10 +119,13 @@ a{
 }
 
 
-
 @layer base {
   body {
     scroll-behavior: smooth;
     background-color: theme(colors.offwhite);
+  }
+  :root {
+    --light: theme('colors.offwhite');
+    --dark: theme('colors.darkgrey');
   }
 }
